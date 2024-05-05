@@ -1,52 +1,63 @@
-title: An Exhibition of A Hunger Artist #Your awesome title
-email: annabellee123456@outlook.com
-description: > # this means to ignore newlines until "baseurl"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+# Site Info
+title: Codinfox Lanyon
+tagline: 'A Jekyll theme based on Lanyon'
+description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
+baseurl: "/lanyon"
+url: http://codinfox.github.io
+logo: '/public/logo.png'
 
-baseurl:  # the subpath of the site
-url: https://github.com/EinHungerkuenstler/EinHungerkuenstler.github.io # the base hostname & protocol for your site
+# Site configurations
+gems:
+  - jekyll-paginate
+markdown: kramdown
+kramdown:
+  input: GFM
+excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss    
+paginate: 5
+paginate_path: '/blog/page:num'
+permalink: pretty
 
-permalink: /:year-:month/:title
-timezone: GMT+1
+version: 1.0.0
 
-favicon: /assets/img/favicon.ico
+# About/contact
+author:
+  name: Codinfox
+  description: A passionate <strong>developer and researcher</strong>, learning to be a giant.
+  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+  contact:
+    linkedin:  https://www.linkedin.com/in/lizhihao
+    github:    https://github.com/codinfox
+    # facebook:  <hide>
+    twitter:   https://twitter.com/Li_Zhihao
+    weibo:     http://weibo.com/41173780
+    email:     http://www.google.com/recaptcha/mailhide/d?k=01I3lZFiZYng9N3QxYEtsDaQ==&c=31wAnZkuKqcG0ATAqJN8Z3ln5kkYLA9TwkGc-IbygpM=
 
-google_analytics: #UA—XXXXXXXX-X
-disqus_shortname: #disqus shortname
-cusdis:
-    app_id: #your cusdis app_id
+# Navigation (2nd level links supported)
+nav:
+  Home:           
+    - '/'
+  Blog:           
+    - '/blog/'
+    - { Categories: '/blog/categories/' }
+    - { Tags: '/blog/tags/' }
+  About:          
+    - '/about/'
+  Github Project: 
+    - 'http://codinfox.github.io/'
 
-user:
-  name: WHY
-  pic: /assets/img/profile.jpg
-  picAlt: "An Exhibition of A Hunger Artist"
-  job: Muss es sein? Es muss sein!
-  # aboutme: true # comment this out if you don't need the 'about' page.
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
 
-exclude:
-  - README.md
-  - LICENSE
-  - github
+hero:
+  image: /public/img/we_will_be_giants_by_yalestewart.jpg
+  caption: Original Artwork &copy; <a href="http://yalestewart.deviantart.com/art/We-Will-Be-Giants-370176475">Yale Stewart</a>
 
-defaults:
-  - scope:
-      path: "_posts"
-      type: posts
-    values:
-      layout: post
-      comment: true   
+# Puglins
+mathjax: true # whether support mathjax
+google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
+disqus_short_name: 'your_short_name' # leave blank if you don't want disqus
 
-collections:
-  additional_pages:
-    output: true
-
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-markdown: kramdown 
-
-# Filtering Content
-show_drafts: null
-limit_posts: 0
-future:      false
-unpublished: false
