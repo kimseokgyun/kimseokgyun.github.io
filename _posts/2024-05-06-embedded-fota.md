@@ -1,8 +1,8 @@
 ---
 layout: post
 title: FOTA (Firmware Over The Air)
-date: 2024-05-06 20:32 +0800
-last_modified_at: 2024-05-06 20:32 +0800
+date: 2024-05-06 20:32 +0900
+last_modified_at: 2024-05-06 20:32 +0900
 tags: [Embedded system]
 toc:  true
 ---
