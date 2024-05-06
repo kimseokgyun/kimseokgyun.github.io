@@ -7,12 +7,29 @@ tags: [Embedded system]
 toc:  true
 ---
 ## Conclusion
-
+<mark>Embedded System 에서 사용되는 Live Firmware Update System 을 설명한다</mark>
 
 ## Meaning
+- MCU에 물리적으로 접근없이 Server를 연동시켜 자동으로 Fimware Update 이 가능한 시스템.
+- **XCP Protocl** 를 이용하여 Version을 체크하여 형상유지에 용이한 Firmware Update를 진행한다.
+- Link File을 이용하여 MCU Flash Memory Section을 만들어 Version, 보안체크용 데이터를 지정시켜 보안성에 강화
 
+<!-- ![placeholder](http://placehold.it/800x400 "Large example image") -->
 
 ## Concept
+IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직접 물리적으로 접촉하여 펌웨어 업데이트하는건 여간 불편한 일이아니다.
+
+따라서 물리적 연결없이 쉽게 업데이트할수있되, 누구든 쉽게 업데이트할수 없게끔 보안 장치를 걸어둔 부트로더 프로그램을 OTA 프로그램이라고 한다.
+
+차량에서 사용하는 가장 간단하고 기본적인 MCU OTA 흐름도는 다음과 같다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3db4b3a7-e5e1-4e64-b906-4fd07acada1c/Untitled.png)
+
+
+###
+
+
+
 
 
 Welcome to **Not Pure Poole**! This is an example post to show the layout.
