@@ -17,7 +17,7 @@ Embedded System 에서 사용되는 Live Firmware Update System 을 설명한다
 <!-- ![placeholder](http://placehold.it/800x400 "Large example image") -->
 
 ## Concept
-![placeholder](/fota/fota_1.png "Large example image")
+![placeholder](/upload_image/fota/fota_1.png "Large example image")
 
 IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직접 물리적으로 접촉하여 펌웨어 업데이트하는건 여간 불편한 일이아니다.
 
@@ -29,7 +29,7 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 
 ### XCP Protocol
-![placeholder](/fota/fota_2.png "Medium example image")
+![placeholder](/upload_image/fota/fota_2.png "Medium example image")
 
 XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다
 
@@ -42,9 +42,9 @@ Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하�
 
 다음은 실제 XCP PID "C9" Flash Write 명령을통해 Flash Memory에 값을 저장한 모습
 
-![placeholder](/fota/fota_2_1.png "Medium example image")
+![placeholder](/upload_image/fota/fota_2_1.png "Medium example image")
 
-이 Flash , RAM 의 저장되어있는 값은 ECU 에서 돌고있는 **칼만필터의 파라미터**일수도, ECU의 **ID**가 될수도, ECU가 가지고있는 프로그램의 **펌웨어 버전**이 될수도 있는것
+이 Flash , RAM 의 저장되어있는 값은 ECU 에서 돌고있는 **칼만필터의 파라미터**일수도, **ECU의 ID**가 될수도, ECU가 가지고있는 프로그램의 **펌웨어 버전**이 될수도 있는것
 
 <ins>XCP Protocol을 이용하여 Flash Write,Erase,Read 명령을 수행하며, ECU와의 Version 태그를 비교하며 Live Firmware Update를 수행할수있다</ins>
 
@@ -76,7 +76,7 @@ MEMORY
 그후 Jenkins와 같은 CI/CD 툴로 Version Tag를 변수로 넣어 자동 컴파일을 걸어두면 쉽게 유지보수가 가능하다.
 
 
-![placeholder](/fota/fota_4.png "Medium example imagee")
+![placeholder](/upload_image/fota/fota_4.png "Medium example imagee")
 
 
 OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
@@ -99,10 +99,9 @@ OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
 
 #### Application Flow
 
-![placeholder](/fota/fota_5.png "Medium example imagee")
+![placeholder](/upload_image/fota/fota_5.png "Medium example imagee")
 
 1. ECU1 는 Application 수행중에 XCP Call back을 수행하고 있을것이다.<ins>(대부분 CAN통신을 이용해 Application을 수행함으로)</ins>
-
 이때 HOST Req에서 어떤 암호입력 예를들어 string 변수 12345678을 함께 보내고, MCU측의 Hash 함수로 "password"를 변환하는 형식의 보안 알고리즘을 추가 가능
 
 2. ECU1 Res를 통해 ECU1이 확실하다면, ECU1의 Version 정보를 체크한다. 
@@ -114,7 +113,7 @@ OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
 
 #### Bootloader Flow
 
-![placeholder](/fota/fota_6.png "Medium example imagee")
+![placeholder](/upload_image/fota/fota_6.png "Medium example imagee")
 
 1. 재부팅이 시작되면 Application에서 진행했던, ECU ID, Version Check를 다시 진행한다.
 
