@@ -30,34 +30,37 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다.
 
-![placeholder](/fota/fota_2.png "Large example image")
+![placeholder](/fota/fota_2.png/400x200 "Large example image"){: .align-center}
+
 
 예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자.
 
-Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 그 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다.
+Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다.
 
 이러한 미리 정의된 XCP 명령 프로토콜을 이용하여 Host는 Slave 의 Flash 또는 RAM 에 저장되어있는 값을 받아서 볼수있다.
 
-**이 Flash , RAM 의 저장되어있는 값은 ECU에서 돌고있는 칼만필터의 파라미터일수도, ECU의 ID가 될수도, ECU가 가지고있는 프로그램의 펌웨어 버전이 될수도 있는것**
+<mark>이 Flash , RAM 의 저장되어있는 값은 ECU에서 돌고있는 칼만필터의 파라미터일수도, ECU의 ID가 될수도, ECU가 가지고있는 프로그램의 펌웨어 버전이 될수도 있는것</mark>
 
 이러한 XCP Protocol을 이용하여 Flash Write,Erase,Read 명령을 수행하며, 이를 이용하여 ECU와의 Version태그를 비교하며 Live Firmware Update를 수행할수있다.
 
 
-### MCU (Slave)측
+### MCU (Slave) 측
 
 위 과정에서 사용되는 ECU ID , Version 정보는 모두 MCU측의 FLASH Memory의 특정 Section에 저장되어야한다.
 
 그 이유는 Host 측에서 정확히 ECU 의 어느 주소값에 ECU의 ID, Version 정보가 있는지 알아야 하기때문.
 
 
-![placeholder](/fota/fota_3.png "Large example image")
+![placeholder](/fota/fota_3.png/400x200 "Large example image"){: .align-center}
+
 
 다음과같이 Link File을 통해 저장할 공간 (Section)을 만들어준다.
 
 그후 Jenkins와 같은 CI/CD 툴로 Version Tag를 변수로 넣어 자동 컴파일을 걸어두면 쉽게 유지보수가 가능하다.
 
 
-![placeholder](/fota/fota_4.png "Large example image")
+![placeholder](/fota/fota_4.png/400x200 "Large example image"){: .align-center}
+
 
 OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
 
