@@ -51,7 +51,7 @@ Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하�
 그 이유는 Host 측에서 정확히 ECU 의 어느 주소값에 ECU의 ID, Version 정보가 있는지 알아야 하기때문.
 
 
-![placeholder](/fota/fota_3.png "Medium example image")
+![placeholder](/fota/fota_3.png "Medium example image"){: .align-center}
 
 
 다음과같이 Link File을 통해 저장할 공간 (Section)을 만들어준다.
@@ -59,7 +59,7 @@ Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하�
 그후 Jenkins와 같은 CI/CD 툴로 Version Tag를 변수로 넣어 자동 컴파일을 걸어두면 쉽게 유지보수가 가능하다.
 
 
-![placeholder](/fota/fota_4.png "Medium example imagee")
+![placeholder](/fota/fota_5.png "Medium example imagee")
 
 
 OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
