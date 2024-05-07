@@ -31,19 +31,11 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 ### XCP Protocol
 ![placeholder](/fota/fota_2.png "Medium example image")
 
+XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다
+예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자
+Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다
+이러한 미리 정의된 XCP 명령 프로토콜을 이용하여 Host는 Slave 의 Flash 또는 RAM 에 저장되어있는 값을 받아서 볼수있다
 
-<dl>
-  <dt>XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다.</dt>
-
-  <dd>예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자.</dd>
-
-  <dd>Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다.
-</dd>
-  
-  <dd>이러한 미리 정의된 XCP 명령 프로토콜을 이용하여 Host는 Slave 의 Flash 또는 RAM 에 저장되어있는 값을 받아서 볼수있다.
-</dd>
-
-</dl>
 
 다음은 실제 XCP PID "C9" Flash Write 명령을통해 Flash Memory에 값을 저장한 모습
 
@@ -60,11 +52,23 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 그 이유는 Host 측에서 정확히 ECU 의 어느 주소값에 ECU의 ID, Version 정보가 있는지 알아야 하기때문
 
+{% highlight js %}
+// STM32H Example Flash.id file
 
-![placeholder](/fota/fota_3.png "Medium example image"){: .align-center}
+MEMORY
+{
+  RAM   (xrw)   : ORIGIN = 0X20000000,  LENGTH = 128K
+  FLASH   (rx)   : ORIGIN = 0X08000000,  LENGTH = 12K-4
+  ECUID   (rx)   : ORIGIN = 0X08002FFFC,  LENGTH = 1
+  VERSION_MAJOR   (rx)   : ORIGIN = 0X0802FFFD,  LENGTH = 128K
+  VERSION_MINOR   (rx)   : ORIGIN = 0X0802FFFE,  LENGTH = 128K
+  VERSION_PATCH   (rx)   : ORIGIN = 0X0802FFFF,  LENGTH = 128K
+}
+
+{% endhighlight %}
 
 
-다음과같이 Link File을 통해 저장할 공간 (Section)을 만들어준다.
+다음 예시와같이 Link File을 통해 저장할 공간 (Section)을 만들어준다.
 
 그후 Jenkins와 같은 CI/CD 툴로 Version Tag를 변수로 넣어 자동 컴파일을 걸어두면 쉽게 유지보수가 가능하다.
 
@@ -92,10 +96,28 @@ OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
 
 #### Application Flow
 
+![placeholder](/fota/fota_5.png "Medium example imagee")
 
+1. ECU1 는 Application 수행중에 XCP Call back을 수행하고 있을것이다. <ins>대부분 CAN통신을 이용해 Application을 수행함으로</ins>
+이때 HOST Req에서 어떤 암호입력 예를들어 string 변수 12345678을 함께 보내고, MCU측의 Hash 함수로 "password"를 변환하는 형식의 보안 알고리즘을 추가 가능
 
+2. ECU1 Res를 통해 ECU1이 확실하다면, ECU1의 Version 정보를 체크한다. 해당 프로세스또한 XCP Protocol PID를 이용하여 진행한다
+
+3. Host측이 ECU1 Version을 비교하여 Update Flag를 보낸다
+
+4. ECU1측에서 Update Flag를 받는다면 재부팅을 진행함
 
 #### Bootloader Flow
+
+![placeholder](/fota/fota_6.png "Medium example imagee")
+
+1. 재부팅이 시작되면 Application에서 진행했던, ECU ID, Version Check를 다시 진행한다.
+
+2. Version Check이후 ECU1 Res를 통해 Firmware Update가 확실해진다면 XCP PID를 이용한 MEMORY Section Clear 가 수행된다.
+
+3. CRC Check와 함게 Flash Write 수행
+
+
 
 
 Welcome to **Not Pure Poole**! This is an example post to show the layout.
