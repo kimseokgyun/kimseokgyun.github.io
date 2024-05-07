@@ -7,7 +7,7 @@ tags: [Embedded system]
 toc:  true
 ---
 ## Conclusion
-<mark>Embedded System 에서 사용되는 Live Firmware Update System 을 설명한다</mark>
+Embedded System 에서 사용되는 Live Firmware Update System 을 설명한다
 
 ## Meaning
 - MCU에 물리적으로 접근없이 Server를 연동시켜 자동으로 Fimware Update 이 가능한 시스템.
@@ -23,7 +23,7 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 차량에서 사용하는 가장 간단하고 기본적인 MCU OTA 흐름도는 다음과 같다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3db4b3a7-e5e1-4e64-b906-4fd07acada1c/Untitled.png)
+![placeholder](/Tree.jpeg "Large example image")
 
 
 ###
