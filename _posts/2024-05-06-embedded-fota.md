@@ -30,7 +30,7 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다.
 
-![placeholder](/fota/fota_2.png/400x200 "Large example image"){: .align-center}
+![placeholder](/fota/fota_2.png "Large example image"){: .align-center}
 
 
 예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자.
@@ -51,7 +51,7 @@ Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하�
 그 이유는 Host 측에서 정확히 ECU 의 어느 주소값에 ECU의 ID, Version 정보가 있는지 알아야 하기때문.
 
 
-![placeholder](/fota/fota_3.png/400x200 "Large example image"){: .align-center}
+![placeholder](/fota/fota_3.png "Large example image"){: .align-center}
 
 
 다음과같이 Link File을 통해 저장할 공간 (Section)을 만들어준다.
@@ -59,7 +59,7 @@ Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하�
 그후 Jenkins와 같은 CI/CD 툴로 Version Tag를 변수로 넣어 자동 컴파일을 걸어두면 쉽게 유지보수가 가능하다.
 
 
-![placeholder](/fota/fota_4.png/400x200 "Large example image"){: .align-center}
+![placeholder](/fota/fota_4.png "Large example image"){: .align-center}
 
 
 OpenBlt는 다음과같이 Bootloader단과 Application단 Section을 나눈다.
