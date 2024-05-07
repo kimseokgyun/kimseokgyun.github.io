@@ -17,13 +17,15 @@ Embedded System 에서 사용되는 Live Firmware Update System 을 설명한다
 <!-- ![placeholder](http://placehold.it/800x400 "Large example image") -->
 
 ## Concept
+![placeholder](/fota/fota_1.png "Large example image")
+
 IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직접 물리적으로 접촉하여 펌웨어 업데이트하는건 여간 불편한 일이아니다.
 
 따라서 물리적 연결없이 쉽게 업데이트할수있되, 누구든 쉽게 업데이트할수 없게끔 보안 장치를 걸어둔 부트로더 프로그램을 OTA 프로그램이라고 한다.
 
 차량에서 사용하는 가장 간단하고 기본적인 MCU OTA 흐름도는 다음과 같다.
 
-![placeholder](/fota/fota_1.png "Large example image")
+
 
 
 ### XCP Protocol
@@ -32,6 +34,7 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 <dl>
   <dt>XCP on CAN , XCP on Ethernet 다양한 물리적 통신에 패킷에 실리는 명령 명세라고 이해하면 편할듯하다.</dt>
+
   <dd>예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자.</dd>
 
   <dd>Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다.
@@ -42,18 +45,13 @@ IOT이든, 차량이든 어떤 제품에 완제품형태로 결착된 MCU에 직
 
 </dl>
 
-<!-- 예를들어 Host 에서 보내는 CAN 메세지중 XCP Message Frame 의 PID 에 0x55 , DAQ 에 8000A000 이라는 메세지를 보냈다고 가정하자.
+다음은 실제 XCP PID "C9" Flash Write 명령을통해 Flash Memory에 값을 저장한 모습
 
-Slave측에서는 0x55는 Flash Memory Read 라는 명령이고 , 읽어야하는 Flash Memory주소는 8000A000 이구나 라고 해석을 하게된다.
+![placeholder](/fota/fota_2_1.png "Medium example image")
 
-이러한 미리 정의된 XCP 명령 프로토콜을 이용하여 Host는 Slave 의 Flash 또는 RAM 에 저장되어있는 값을 받아서 볼수있다. -->
+이 Flash , RAM 의 저장되어있는 값은 ECU 에서 돌고있는 **칼만필터의 파라미터**일수도, ECU의 **ID**가 될수도, ECU가 가지고있는 프로그램의 **펌웨어 버전**이 될수도 있는것
 
-
-다음
-
-<mark>이 Flash , RAM 의 저장되어있는 값은 ECU에서 돌고있는 칼만필터의 파라미터일수도, ECU의 ID가 될수도, ECU가 가지고있는 프로그램의 펌웨어 버전이 될수도 있는것</mark>
-
-이러한 XCP Protocol을 이용하여 Flash Write,Erase,Read 명령을 수행하며, 이를 이용하여 ECU와의 Version태그를 비교하며 Live Firmware Update를 수행할수있다.
+<ins>이러한 XCP Protocol을 이용하여 Flash Write,Erase,Read 명령을 수행하며, 이를 이용하여 ECU와의 Version태그를 비교하며 Live Firmware Update를 수행할수있다</ins>
 
 
 ### MCU (Slave) 준비과정
