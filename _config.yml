@@ -57,3 +57,7 @@ author:
   name: Kim Seok Gyun
   url: https://github.com/kimseokgyun
   email: tjrrbs1116@gmail.com
+
+toc:
+  enabled: true
+  heading_level: 4
