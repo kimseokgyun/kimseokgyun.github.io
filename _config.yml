@@ -58,6 +58,6 @@ author:
   url: https://github.com/kimseokgyun
   email: tjrrbs1116@gmail.com
 
-toc:
-  enabled: true
-  heading_level: 4
+# toc:
+#   enabled: true
+#   heading_level: 4
