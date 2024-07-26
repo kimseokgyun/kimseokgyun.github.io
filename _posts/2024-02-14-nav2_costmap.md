@@ -3,7 +3,7 @@ layout: post
 title: Nav2_Costmap2d
 date: 2024-02-14 20:32 +0900
 last_modified_at: 2024-02-14 20:32 +0900
-tags: [robot ,ROS2]
+tags: [Robot ,ROS2]
 toc:  true
 ---
 ## Conclusion
