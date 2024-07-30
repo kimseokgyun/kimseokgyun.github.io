@@ -18,7 +18,7 @@ toc:  true
 블로그에 소개될때는, 증분형엔코더는 속도값이 절대엔코더는 위치값이 나오는 엔코더로 소개하는데 피곤하게 따지게보면 결국 raw data는 위치값이 나오는것 아닌가?
 
 <center>
-  <img src="/upload_image/motor_encoder/incremental_encoder.png" alt="Large example image" width="500"/>
+  <img src="/upload_image/motor_encoder/incremental_encoder.png" alt="Large example image" width="250"/>
 </center>
 
 - 한개의 값만으로는 정방향/역방향 감지를 못하므로 두개의 emitters/detectors 단을 구성한다
@@ -35,7 +35,7 @@ toc:  true
 ### 절대 엔코더
 
 <center>
-  <img src="/upload_image/motor_encoder/absolute_encoder.png" alt="Large example image" width="500"/>
+  <img src="/upload_image/motor_encoder/absolute_encoder.png" alt="Large example image" width="250"/>
 </center>
 
 - 기존 증분형엔코더는 빛을 통과할수있는 hall 개수를 몇개 지나갔느냐로 판단을했다면, 절대엔코더는 각 위치마다 고유의 디지털 코드를 가지고있다.
