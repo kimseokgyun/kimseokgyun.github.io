@@ -9,7 +9,7 @@ toc:  true
 ## Conclusion
 산업에서 사용하는 모터의 이해
 
-<br></br>
+<br/>
 
 ## Concept
 
@@ -18,7 +18,7 @@ toc:  true
 블로그에 소개될때는, 증분형엔코더는 속도값이 절대엔코더는 위치값이 나오는 엔코더로 소개하는데 피곤하게 따지게보면 결국 raw data는 위치값이 나오는것 아닌가?
 
 <center>
-  <img src="/upload_image/motor_encoder/incremetal_encoder.png" alt="Large example image" width="500"/>
+  <img src="/upload_image/motor_encoder/incremental_encoder.png" alt="Large example image" width="500"/>
 </center>
 
 - 한개의 값만으로는 정방향/역방향 감지를 못하므로 두개의 emitters/detectors 단을 구성한다
@@ -30,7 +30,7 @@ toc:  true
 - 추가적으로 기어드 모터라면, 기어비*resolution이 되기때문에 더 정밀한 각도 측정이 가능하다.
 
 
-<br></br>
+<br/>
 
 ### 절대 엔코더
 
@@ -43,7 +43,7 @@ toc:  true
 - 각 Hall은 이진코드(Gray Code)를 출력한다
 - 예를들어, 12비트 엔코더 resolution 4096인 엔코더는 4096개의 각기 다른 값을 나타냄으로써, 이전의정보없이(전원이 재인가되어도) 현재 위치를 바로 파악가능하다.
 
-<br></br>
+<br/>
 
 ### 기어드 모터라면 얘기가 다름
 
